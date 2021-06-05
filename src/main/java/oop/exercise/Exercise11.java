@@ -19,6 +19,7 @@ public class Exercise11
         return input.nextFloat();
     }
     public static void printRate(double euroQuantity, double euroChangeRate){
+
         double USD = euroQuantity * euroChangeRate;
         BigDecimal rUSD = new BigDecimal(USD);
         rUSD = rUSD.setScale(2, RoundingMode.CEILING);
