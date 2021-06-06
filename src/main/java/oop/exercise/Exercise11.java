@@ -10,25 +10,26 @@ public class Exercise11
 {
     static Scanner input = new Scanner(System.in);
 
-    public static double euroCount(){
+    public static String euroCount(){
         System.out.print("How many euros are you exchanging? ");
-        return input.nextFloat();
+        return input.nextLine();
     }
-    public static double exchangeRate(){
+    public static String exchangeRate(){
         System.out.print("What is the exchange rate? ");
-        return input.nextFloat();
+        return input.nextLine();
     }
-    public static void printRate(double euroQuantity, double euroChangeRate){
-
+    public static void printRate(String eQ, String eCR){
+        double euroQuantity = Double.parseDouble(eQ);
+        double euroChangeRate = Double.parseDouble(eCR);
         double USD = euroQuantity * euroChangeRate;
         BigDecimal rUSD = new BigDecimal(USD);
         rUSD = rUSD.setScale(2, RoundingMode.CEILING);
-        System.out.printf("%.2f euros at an exchange rate of %f is %.2f U.S. Dollars",
-                euroQuantity, euroChangeRate, rUSD);
+        System.out.print(eQ + " euros at an exchange rate of " + eCR + " is\n"
+                            + rUSD + " U.S. Dollars");
     }
     public static void main( String[] args ) {
-        double euroQuantity = euroCount();
-        double euroChangeRate = exchangeRate();
+        String euroQuantity = euroCount();
+        String euroChangeRate = exchangeRate();
         printRate(euroQuantity, euroChangeRate);
     }
 }
